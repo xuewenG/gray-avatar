@@ -1,0 +1,13 @@
+version: "3.8"
+networks:
+  my-bridge:
+    external:
+      name: my-bridge
+services:
+  gray-avatar:
+    build: .
+    image: ixuewen/gray-avatar
+    container_name: gray-avatar-docker
+    restart: always
+    networks:
+      - my-bridge
