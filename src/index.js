@@ -2,10 +2,12 @@ const http = require('http');
 const path = require('path');
 const express = require('express');
 
+const config = require('./config')
+
 const app = express();
 
 app.all('*', (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.setHeader('Access-Control-Allow-Origin', config.cors_origin);
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With');
