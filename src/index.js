@@ -32,7 +32,5 @@ app.get('/gray-avatar/qq/avatar', (request, response) => {
     })
 });
 
-const port = 80;
-
-app.listen(port);
-console.log(`Server running at http://127.0.0.1: ${port}`);
+app.listen(config.port);
+console.log(`Server running at http://127.0.0.1: ${config.port}`);
