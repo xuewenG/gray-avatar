@@ -21,10 +21,8 @@ app.get('/gray-avatar/qq/avatar', (request, response) => {
     http.get(`http://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`, res => {
         let imgData = '';
         res.setEncoding('binary');
-        res.on('data', function (chunk) {
-            imgData += chunk
-        });
-        res.on('end', function () {
+        res.on('data', chunk => imgData += chunk);
+        res.on('end', () => {
             response.setHeader('Content-Type', 'image/jpeg');
             response.write(imgData, 'binary');
             response.end();
