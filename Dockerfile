@@ -1,4 +1,4 @@
-FROM node:12.17.0-stretch
+FROM node:12.17.0-stretch AS BUILDER
 LABEL maintainer="xuewenG" \
         site="https://github.com/xuewenG/gray-avatar"
 
