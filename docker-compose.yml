@@ -11,3 +11,6 @@ services:
     restart: always
     networks:
       - my-bridge
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/docker-volume/gray-avatar/data:/root/data:ro
