@@ -1,16 +1,29 @@
 FROM node:12.17.0-stretch
-
 LABEL maintainer="xuewenG" \
         site="https://github.com/xuewenG/gray-avatar"
 
-WORKDIR /root
+ENV MY_HOME=/root
+RUN mkdir -p $MY_HOME
+WORKDIR $MY_HOME
 
-COPY package.json .
-
+COPY package.json $MY_HOME
 RUN set -x \
-    && mkdir -p log \
-    && yarn
+    && yarn install
 
-COPY src .
+COPY . $MY_HOME
+RUN set -x \
+    && yarn run build
+
+FROM node:12.17.0-stretch
+
+ENV MY_HOME=/root
+RUN mkdir -p $MY_HOME
+WORKDIR $MY_HOME
+
+COPY package.json $MY_HOME
+RUN set -x \
+    && yarn install --production
+
+COPY --from=BUILDER /root/build .
 
 ENTRYPOINT ["node", "index.js"]
