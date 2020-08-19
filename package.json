@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc && node build"
+    "dev": "tsc && node dist"
   },
   "dependencies": {
     "@ixuewen/express-util": "^1.0.0",

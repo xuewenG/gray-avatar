@@ -1,6 +1,6 @@
 .idea/
-log/*.log
 node_modules/
+dist/
+
+log/*.log
 package-lock.json
-data/
-build/
