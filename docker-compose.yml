@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 networks:
   my-bridge:
     external:
@@ -13,4 +13,7 @@ services:
       - my-bridge
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/docker-volume/gray-avatar/data:/root/data:ro
+    environment:
+      - PORT=${GRAY_AVATAR_PORT}
+      - CONTEXT_PATH=${GRAY_AVATAR_CONTEXT_PATH}
+      - CORS_ORIGIN=${GRAY_AVATAR_CORS_ORIGIN}
