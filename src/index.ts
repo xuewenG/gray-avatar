@@ -1,39 +1,13 @@
-import http from 'http'
 import express from 'express'
-
-import config from './config'
+import { serverConfig } from './config'
+import { bindRouter } from './router'
+import { cors } from '@ixuewen/express-util'
 
 const app = express()
 
-app.all('*', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', config.cors_origin)
-  res.setHeader('Access-Control-Allow-Credentials', 'true')
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'PUT, POST, GET, DELETE, OPTIONS'
-  )
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Content-Length, Authorization, Accept, X-Requested-With'
-  )
-  if (req.method === 'OPTIONS') res.sendStatus(200)
-  else next()
-})
+cors(app, serverConfig.corsOrigin)
+bindRouter(app)
 
-app.get('/gray-avatar/qq/avatar', (request, response) => {
-  const qq = request.query.qq
-  console.log(`${new Date().toLocaleString()}---${qq}`)
-  http.get(`http://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`, (res) => {
-    let imgData = ''
-    res.setEncoding('binary')
-    res.on('data', (chunk) => (imgData += chunk))
-    res.on('end', () => {
-      response.setHeader('Content-Type', 'image/jpeg')
-      response.write(imgData, 'binary')
-      response.end()
-    })
-  })
-})
-
-app.listen(config.port)
-console.log(`Server running at http://127.0.0.1:${config.port}`)
+const port = serverConfig.port
+app.listen(port)
+console.log(`Server running at http://127.0.0.1:${port}`)

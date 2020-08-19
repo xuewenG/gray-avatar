@@ -8,6 +8,8 @@
     "dev": "tsc && node build"
   },
   "dependencies": {
+    "@ixuewen/express-util": "^1.0.0",
+    "@ixuewen/mysql-util": "^1.0.0",
     "express": "^4.17.1",
     "js-yaml": "^3.14.0"
   },
