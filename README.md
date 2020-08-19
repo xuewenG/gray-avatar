@@ -2,7 +2,7 @@
 
 这是一个可以获取 QQ 头像的小工具。
 
-使用了 QQ 官方的接口，这个官方的接口可以直接获取头像。但是如果需要在自己的网页中使用，可能会遇到跨域的问题 (搭配 canvas 时)。
+使用了 QQ 官方的接口，这个官方的接口可以直接获取头像。但是如果需要在自己的网页中使用，可能会遇到跨域的问题 (搭配 Canvas 时)。
 
 例如，在 [这个页面 (点击查看)](https://blog.xuewen.me/pages/gray-avatar) 中，我需要通过 QQ 号来获取头像，然后进行下一步的处理。如果直接调用 QQ 的接口获取头像，就会存在跨域问题，而导致无法在 Canvas 中处理图像并导出 (这种现象叫 Canvas 污染)。
 
@@ -30,7 +30,7 @@ ixuewen/gray-avatar
 
 使用浏览器访问: `http://${YOUR_DOMAIN}:${PORT}/${CONTEXT_PATH}/avatar/${QQ_NUMBER}`
 
-例如: `https://api.xuewen.ink/gray-avatar/avatar/12586985`
+例如: [https://api.xuewen.ink/gray-avatar/avatar/12586985](https://api.xuewen.ink/gray-avatar/avatar/12586985)
 
 这个地址中的变量取值为：
 
